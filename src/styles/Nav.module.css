@@ -1,0 +1,63 @@
+.container {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  padding: 30px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.logo h1 {
+  font-size: 20px;
+  font-weight: 600;
+  font-family: "Space";
+}
+
+.carre {
+  width: 32px;
+  height: 32px;
+  background-color: #8C52FF;
+  border: 3px solid #1a1a1a;
+  border-radius: 12px;
+  box-shadow: 5px 5px 0px #1a1a1a;
+}
+
+.navLinks {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  font-size: 20px;
+  font-family: "Space";
+}
+
+.navLinks li {
+  position: relative;
+}
+.navLinks li a {
+  text-decoration: none;
+  color: #1a1a1a;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 5px 10px;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.user {
+  background-color: #8C52FF;
+  border: 2px solid #1a1a1a;
+  border-radius: 999px;
+  padding: 8px 16px;
+  box-shadow: 5px 5px 0px #1a1a1a;
+  transform: rotate(-5deg);
+}
+
+.user h2 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  font-family: "Space";
+}
