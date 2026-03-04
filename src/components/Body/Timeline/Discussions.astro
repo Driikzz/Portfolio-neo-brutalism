@@ -1,0 +1,43 @@
+---
+import LabelCustom from '../../Buttons/LabelCustom';
+import DiscussionItem from './DiscussionItem';
+import styles from '../../../styles/Discussions.module.css';
+---
+
+<div class={styles.section}>
+  <LabelCustom text="Veille" backgroundColor="#8C52FF" color="#ffffff" />
+  <h2 class={styles.title}>Ce que je lis.</h2>
+
+  <div class={styles.list}>
+    <DiscussionItem
+      initials="JS"
+      title="L'avenir des React Server Components"
+      author="Alex"
+      comments={24}
+    />
+    <DiscussionItem
+      initials="TS"
+      title="Pourquoi TypeScript strict change tout"
+      author="Sarah"
+      comments={18}
+    />
+    <DiscussionItem
+      initials="UI"
+      title="Néo-brutalisme : tendance ou révolution du design ?"
+      author="Mike"
+      comments={42}
+    />
+    <DiscussionItem
+      initials="CSS"
+      title="Maîtriser CSS Grid : le guide complet"
+      author="Alex"
+      comments={15}
+    />
+  </div>
+
+  <!-- CTA dashed -->
+  <div class={styles.cta}>
+    <p class={styles.ctaText}>Un projet en tête ?</p>
+    <a href="#" class={styles.ctaLink}>Démarrons une conversation →</a>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+.wrapper {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.cursor {
+  display: inline-block;
+  margin-left: 2px;
+  font-weight: 400;
+  animation: blink 0.75s step-end infinite;
+  color: #8C52FF;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}

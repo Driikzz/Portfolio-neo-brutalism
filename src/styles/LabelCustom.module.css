@@ -1,0 +1,29 @@
+.label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 14px;
+  border: 2.5px solid #1a1a1a;
+  border-radius: 6px;
+  box-shadow: 3px 3px 0px #1a1a1a;
+  font-family: "Space", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a1a1a;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  width: fit-content;
+}
+
+.vertical {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  padding: 14px 6px;
+}
+
+.vertical-reverse {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  padding: 14px 6px;
+}

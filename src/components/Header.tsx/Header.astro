@@ -1,7 +1,29 @@
 ---
 import NavBar from './NavBar';
 import LeftSide from './LeftSide';
+import HeaderPicture from './RightSide';
 ---
 
 <NavBar client:load />
-<LeftSide client:load />
+<div class="heroLayout" id="accueil">
+  <LeftSide client:load />
+  <HeaderPicture client:load />
+</div>
+
+<style>
+  .heroLayout {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 50px;
+  }
+
+  @media (max-width: 768px) {
+    .heroLayout {
+      flex-direction: column-reverse;
+      align-items: center;
+      padding: 24px 20px;
+      gap: 32px;
+    }
+  }
+</style>

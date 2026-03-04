@@ -1,0 +1,26 @@
+---
+import Timeline from './Timeline.astro';
+import Discussions from './Discussions.astro';
+---
+
+<section id="parcours" class="tlSection">
+  <Timeline />
+  <Discussions />
+</section>
+
+<style>
+  .tlSection {
+    display: flex;
+    gap: 40px;
+    padding: 40px;
+    align-items: flex-start;
+  }
+
+  @media (max-width: 768px) {
+    .tlSection {
+      flex-direction: column;
+      padding: 24px 20px;
+      gap: 32px;
+    }
+  }
+</style>

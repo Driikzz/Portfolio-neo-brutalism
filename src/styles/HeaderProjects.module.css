@@ -1,0 +1,46 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px 40px 20px;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.title {
+  font-family: "Space", sans-serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 24px 20px 12px;
+  }
+  .title {
+    font-size: 28px;
+  }
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.title {
+  font-family: "Space", sans-serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}

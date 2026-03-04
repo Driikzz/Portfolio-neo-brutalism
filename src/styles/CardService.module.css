@@ -1,0 +1,77 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 28px;
+  background-color: #ffffff;
+  border: 3px solid #1a1a1a;
+  border-radius: 20px;
+  box-shadow: 5px 5px 0px #1a1a1a;
+  max-width: 300px;
+}
+
+/* === Icon wrapper shapes === */
+.iconWrapper {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 3px 3px 0px #1a1a1a;
+}
+
+.rounded {
+  border-radius: 14px;
+}
+
+.circle {
+  border-radius: 50%;
+}
+
+/* Forme "document coin plié" */
+.tag {
+  border-radius: 12px 0px 12px 12px;
+  position: relative;
+}
+
+.tag::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  width: 14px;
+  height: 14px;
+  background-color: #ffffff;
+  border-left: 3px solid currentColor;
+  border-bottom: 3px solid currentColor;
+  border-radius: 0 0 0 4px;
+}
+
+.icon {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.title {
+  font-family: "Space", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.description {
+  font-family: "Space", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: #4B5563;
+  margin: 0;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .card {
+    max-width: 100%;
+    width: 100%;
+  }
+}

@@ -1,0 +1,93 @@
+.item {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+/* === Timeline (dot + line) === */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  padding-top: 6px;
+}
+
+.dot {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 3px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.dotInner {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+}
+
+.line {
+  width: 2px;
+  flex: 1;
+  min-height: 40px;
+  background-color: #d1d5db;
+  margin-top: 4px;
+}
+
+/* === Card === */
+.card {
+  flex: 1;
+  border: 2.5px solid #1a1a1a;
+  border-radius: 16px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 24px;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.role {
+  font-family: "Space", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.period {
+  font-family: "Space", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #1a1a1a;
+  border: 2px solid #1a1a1a;
+  border-radius: 999px;
+  padding: 4px 12px;
+  white-space: nowrap;
+}
+
+.company {
+  font-family: "Space", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.description {
+  font-family: "Space", sans-serif;
+  font-size: 14px;
+  color: #4B5563;
+  margin: 0;
+  line-height: 1.6;
+}

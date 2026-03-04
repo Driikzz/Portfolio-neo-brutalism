@@ -2,8 +2,143 @@
   display: flex;
   gap: 20px;
   justify-content: space-between;
-  padding: 30px;
+  align-items: center;
+  padding: 15px;
 }
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.logo h1 {
+  font-size: 20px;
+  font-weight: 600;
+  font-family: "Space";
+}
+
+.carre {
+  width: 32px;
+  height: 32px;
+  background-color: #8C52FF;
+  border: 3px solid #1a1a1a;
+  border-radius: 12px;
+  box-shadow: 5px 5px 0px #1a1a1a;
+}
+
+.navLinks {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  font-size: 20px;
+  font-family: "Space";
+  margin: 0;
+  padding: 0;
+}
+
+.navLinks li {
+  position: relative;
+}
+.navLinks li a {
+  text-decoration: none;
+  color: #1a1a1a;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 5px 10px;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.user {
+  background-color: #8C52FF;
+  border: 2px solid #1a1a1a;
+  border-radius: 999px;
+  padding: 8px 16px;
+  box-shadow: 5px 5px 0px #1a1a1a;
+  transform: rotate(-5deg);
+}
+
+.user h2 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  font-family: "Space";
+  margin: 0;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* === Hamburger === */
+.hamburger {
+  display: none;
+  background: none;
+  border: 2.5px solid #1a1a1a;
+  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+  cursor: pointer;
+  font-family: "Space";
+  box-shadow: 3px 3px 0px #1a1a1a;
+  transition: background-color 0.15s ease;
+}
+.hamburger:hover {
+  background-color: #8C52FF22;
+}
+
+/* === Mobile dropdown === */
+.mobileMenu {
+  border-top: 2.5px solid #1a1a1a;
+  padding: 16px 20px;
+  background-color: #ffffff;
+}
+
+.mobileLinks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mobileLinks li a {
+  display: block;
+  text-decoration: none;
+  color: #1a1a1a;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: "Space";
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  transition: all 0.15s ease;
+}
+.mobileLinks li a:hover {
+  background-color: #8C52FF;
+  color: #ffffff;
+  border-color: #1a1a1a;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .desktopNav {
+    display: none;
+  }
+  .hamburger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .user {
+    display: none;
+  }
+}
+
 
 .logo {
   display: flex;

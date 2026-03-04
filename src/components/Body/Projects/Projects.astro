@@ -1,0 +1,43 @@
+---
+import HeaderProjects from './HeaderProjects';
+import ProjectCard from './ProjectCard';
+import styles from '../../../styles/Projects.module.css';
+---
+
+<section id="projets" class={styles.section}>
+  <HeaderProjects client:load />
+
+  <div class={styles.grid}>
+    <ProjectCard
+      client:load
+      bannerTitle="E-COMM"
+      bannerColor="#8C52FF"
+      title="Neon Market"
+      description="Plateforme e-commerce haute performance avec gestion des stocks en temps réel et intégration de paiement sans friction."
+      tags={["REACT", "STRIPE", "NODE"]}
+      demoUrl="#"
+      codeUrl="#"
+    />
+    <ProjectCard
+      client:load
+      bannerTitle="DASH"
+      bannerColor="#FF3EA5"
+      title="Analytics Pro"
+      description="Dashboard de visualisation de données pour piloter la croissance de vos réseaux sociaux. Des insights clairs, en temps réel."
+      tags={["VUE", "FIREBASE", "D3.JS"]}
+      demoUrl="#"
+      codeUrl="#"
+    />
+    <ProjectCard
+      client:load
+      bannerTitle="CHAT"
+      bannerColor="#22D3EE"
+      bannerTextColor="#1a1a1a"
+      title="TalkFlow"
+      description="Messagerie temps réel chiffrée de bout en bout, partage de fichiers et canaux de groupe. Slack, mais le vôtre."
+      tags={["SOCKET.IO", "EXPRESS", "REDIS"]}
+      demoUrl="#"
+      codeUrl="#"
+    />
+  </div>
+</section>

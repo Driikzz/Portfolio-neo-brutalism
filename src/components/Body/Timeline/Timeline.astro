@@ -1,0 +1,38 @@
+---
+import LabelCustom from '../../Buttons/LabelCustom';
+import TimelineItem from './TimelineItem';
+import styles from '../../../styles/Timeline.module.css';
+---
+
+<div class={styles.section}>
+  <LabelCustom text="Experience" backgroundColor="#FF3EA5" />
+  <h2 class={styles.title}>Mon parcours.</h2>
+
+  <div class={styles.list}>
+    <TimelineItem
+      role="Développeur Freelance"
+      company="Indépendant"
+      companyColor="#FF3EA5"
+      period="2026 - Présent"
+      description="Je prends en charge des projets web et mobile de A à Z. React, TypeScript, React Native, Node.js... Je m'adapte à vos besoins et je livre des solutions performantes et maintenables."
+      dotColor="#FF3EA5"
+    />
+    <TimelineItem
+      role="Développeur Full Stack"
+      company="Teamupp"
+      companyColor="#8C52FF"
+      period="2023 - 2026"
+      description="Conception et développement d'une application React Native cross-platform avec un backend Node.js/TypeScript. 3 ans, une vraie montée en compétences."
+      dotColor="#8C52FF"
+    />
+    <TimelineItem
+      role="BAC+3 Développement"
+      company="ESGI Lyon"
+      companyColor="#22D3EE"
+      period="2022 - 2025"
+      description="Formation en développement web et mobile. Diplôme validé avec une spécialisation orientée JavaScript fullstack."
+      dotColor="#22D3EE"
+      isLast={true}
+    />
+  </div>
+</div>
