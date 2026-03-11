@@ -1,0 +1,10 @@
+---
+import Layout from '../layouts/Layout.astro';
+import NavBar from '../components/Header.tsx/NavBar';
+import ContactSection from '../components/Contact/ContactSection.astro';
+---
+
+<Layout>
+  <NavBar client:load />
+  <ContactSection />
+</Layout>

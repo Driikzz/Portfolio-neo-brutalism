@@ -1,0 +1,508 @@
+/* ============================================
+   LAYOUT
+   ============================================ */
+.page {
+  display: flex;
+  gap: 0;
+  min-height: 100vh;
+  align-items: flex-start;
+}
+
+/* ============================================
+   SIDEBAR
+   ============================================ */
+.sidebar {
+  width: 240px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 32px;
+  padding: 28px 16px 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Space", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a1a1a;
+  text-decoration: none;
+  border: 2px solid #1a1a1a;
+  border-radius: 10px;
+  padding: 8px 14px;
+  background-color: #ffffff;
+  box-shadow: 3px 3px 0px #1a1a1a;
+  transition: box-shadow 0.1s ease, transform 0.1s ease;
+  width: fit-content;
+}
+
+.backLink:hover {
+  box-shadow: 1px 1px 0px #1a1a1a;
+  transform: translate(2px, 2px);
+}
+
+/* Project info card */
+.sideCard {
+  border: 2.5px solid #1a1a1a;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 4px 4px 0px #1a1a1a;
+  background-color: #ffffff;
+}
+
+.sideCardBanner {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sideCardBannerText {
+  font-family: "Space", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #ffffff;
+}
+
+.sideCardBody {
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sideProjectTitle {
+  font-family: "Space", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.sideProjectType {
+  font-family: "Space", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: #666;
+  margin: 0;
+}
+
+/* Details card */
+.sideSection {
+  border: 2.5px solid #1a1a1a;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 4px 4px 0px #1a1a1a;
+  background-color: #ffffff;
+}
+
+.sideSectionLabel {
+  font-family: "Space", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #888;
+  padding: 10px 16px 6px;
+  border-bottom: 1.5px solid #e5e5e5;
+}
+
+.sideRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-bottom: 1.5px solid #f0f0f0;
+  font-family: "Space", sans-serif;
+  font-size: 13px;
+  color: #1a1a1a;
+}
+
+.sideRow:last-child {
+  border-bottom: none;
+}
+
+.sideRowIcon {
+  font-size: 15px;
+  width: 20px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.sideRowValue {
+  font-weight: 600;
+}
+
+.statusDot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 4px;
+  flex-shrink: 0;
+}
+
+.sideTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 10px 16px;
+}
+
+.sideTag {
+  font-family: "Space", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 2px solid #1a1a1a;
+  border-radius: 6px;
+  padding: 2px 8px;
+  color: #1a1a1a;
+}
+
+/* Links card */
+.sideLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sideLinkBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: "Space", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a1a1a;
+  text-decoration: none;
+  border: 2.5px solid #1a1a1a;
+  border-radius: 12px;
+  padding: 10px 16px;
+  background-color: #ffffff;
+  box-shadow: 3px 3px 0px #1a1a1a;
+  transition: box-shadow 0.1s ease, transform 0.1s ease;
+  cursor: pointer;
+}
+
+.sideLinkBtn:hover {
+  box-shadow: 1px 1px 0px #1a1a1a;
+  transform: translate(2px, 2px);
+}
+
+.sideLinkBtn.filled {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+/* ============================================
+   MAIN CONTENT
+   ============================================ */
+.divider {
+  border: none;
+  border-top: 2px dashed #1a1a1a30;
+  margin: 0;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+  padding: 32px 40px 60px 32px;
+  border-left: 2.5px solid #1a1a1a;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Space", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #888;
+  margin-bottom: 20px;
+}
+
+.breadcrumb a {
+  color: #888;
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  color: #1a1a1a;
+}
+
+.breadcrumbCurrent {
+  color: #1a1a1a;
+}
+
+/* Title */
+.title {
+  font-family: "Space", sans-serif;
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+  color: #1a1a1a;
+  margin: 0 0 20px 0;
+}
+
+/* Tags */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.tag {
+  font-family: "Space", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #1a1a1a;
+  border: 2.5px solid #1a1a1a;
+  border-radius: 8px;
+  padding: 4px 12px;
+  background-color: #f0ece3;
+}
+
+/* Intro */
+.intro {
+  font-family: "Space", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #333;
+  margin-bottom: 40px;
+}
+
+/* Sections */
+.section {
+  margin-bottom: 40px;
+}
+
+.sectionHeading {
+  font-family: "Space", sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 14px 0;
+}
+
+.sectionText {
+  font-family: "Space", sans-serif;
+  font-size: 15px;
+  line-height: 1.75;
+  color: #444;
+  margin: 0 0 16px 0;
+}
+
+/* Highlight block (quote-like) */
+.highlight {
+  position: relative;
+  border: 2.5px solid #1a1a1a;
+  border-radius: 14px;
+  padding: 18px 20px;
+  background-color: #fafafa;
+  box-shadow: 4px 4px 0px #1a1a1a;
+  margin: 20px 0;
+}
+
+.highlightLabel {
+  position: absolute;
+  top: -13px;
+  right: 16px;
+  font-family: "Space", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ffffff;
+  padding: 2px 10px;
+  border-radius: 6px;
+  border: 2px solid #1a1a1a;
+}
+
+.highlightText {
+  font-family: "Space", sans-serif;
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.6;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+/* Bullet list */
+.bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.bullet {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-family: "Space", sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+}
+
+.bullet::before {
+  content: '→';
+  font-weight: 700;
+  flex-shrink: 0;
+  color: #1a1a1a;
+}
+
+/* Challenge box (Key Takeaway) */
+.challenge {
+  border: 2.5px solid #1a1a1a;
+  border-radius: 16px;
+  padding: 22px 24px;
+  background-color: #F5D060;
+  box-shadow: 5px 5px 0px #1a1a1a;
+  margin: 40px 0;
+}
+
+.challengeLabel {
+  font-family: "Space", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #1a1a1a;
+  margin: 0 0 10px 0;
+}
+
+.challengeText {
+  font-family: "Space", sans-serif;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+/* Read next */
+.readNext {
+  margin-top: 48px;
+}
+
+.readNextTitle {
+  font-family: "Space", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #888;
+  margin: 0 0 20px 0;
+}
+
+.readNextGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+/* Mini project card */
+.miniCard {
+  border: 2.5px solid #1a1a1a;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 4px 4px 0px #1a1a1a;
+  background-color: #ffffff;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.1s ease, transform 0.1s ease;
+}
+
+.miniCard:hover {
+  box-shadow: 2px 2px 0px #1a1a1a;
+  transform: translate(2px, 2px);
+}
+
+.miniCardBanner {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.miniCardBannerText {
+  font-family: "Space", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #ffffff;
+}
+
+.miniCardBody {
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.miniCardTag {
+  font-family: "Space", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #888;
+}
+
+.miniCardTitle {
+  font-family: "Space", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .page {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    position: static;
+    padding: 20px;
+    border-bottom: 2.5px solid #1a1a1a;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .content {
+    border-left: none;
+    padding: 24px 20px 40px;
+  }
+
+  .readNextGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .sideLinks {
+    flex-direction: row;
+  }
+}

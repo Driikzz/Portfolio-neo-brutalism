@@ -1,18 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import { FiMenu, FiX } from 'react-icons/fi';
 import styles from '../../styles/Nav.module.css';
+import { gsap, useGSAP } from '../../lib/gsap';
 
 const links = [
-  { href: '#accueil', label: 'Accueil' },
-  { href: '#services', label: 'Expertises' },
-  { href: '#projets', label: 'Projets' },
-  { href: '#parcours', label: 'Parcours' },
+  { href: '/#accueil', label: 'Accueil' },
+  { href: '/#services', label: 'Expertises' },
+  { href: '/#projets', label: 'Projets' },
+  { href: '/#parcours', label: 'Parcours' },
 ];
 
 const NavBar: React.FC = () => {
   const [open, setOpen] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
+
+  useGSAP(() => {
+    gsap.from(navRef.current, {
+      yPercent: -110,
+      duration: 0.75,
+      ease: 'power4.out',
+    });
+  }, { scope: navRef });
 
   return (
-    <nav className={styles.navbar}>
+    <nav ref={navRef} className={styles.navbar}>
       <div className={styles.container}>
         <div className={styles.logo}>
           <div className={styles.carre}></div>
@@ -33,7 +44,7 @@ const NavBar: React.FC = () => {
             onClick={() => setOpen(!open)}
             aria-label="Menu"
           >
-            {open ? '✕' : '☰'}
+            {open ? <FiX size={18} /> : <FiMenu size={18} />}
           </button>
           <div className={styles.user}>
             <h2>Rémi</h2>

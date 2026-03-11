@@ -1,4 +1,5 @@
 import React from 'react';
+import { FiMail, FiGithub, FiFileText } from 'react-icons/fi';
 import styles from '../styles/Footer.module.css';
 
 interface FooterProps {
@@ -26,9 +27,9 @@ const Footer: React.FC<FooterProps> = ({
       </div>
 
       <div className={styles.icons}>
-        <a href={email} className={styles.iconBtn} title="Email">@</a>
-        <a href={githubUrl} target="_blank" className={styles.iconBtn} title="GitHub">&lt;/&gt;</a>
-        <a href={resumeUrl} target="_blank" className={styles.iconBtn} title="Resume">📄</a>
+        <a href={email} className={styles.iconBtn} title="Email"><FiMail size={18} /></a>
+        <a href={githubUrl} target="_blank" className={styles.iconBtn} title="GitHub"><FiGithub size={18} /></a>
+        <a href={resumeUrl} target="_blank" className={styles.iconBtn} title="Resume"><FiFileText size={18} /></a>
       </div>
     </footer>
   );

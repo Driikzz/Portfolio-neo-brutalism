@@ -1,0 +1,67 @@
+.link {
+  text-decoration: none;
+  display: block;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  border: 3px solid #1a1a1a;
+  border-radius: 16px;
+  box-shadow: 5px 5px 0px #1a1a1a;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  cursor: default;
+}
+
+.link .card {
+  cursor: pointer;
+}
+
+.link .card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0px #1a1a1a;
+}
+
+.icon {
+  font-size: 22px;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.25);
+  border-radius: 12px;
+  border: 2.5px solid rgba(26, 26, 26, 0.25);
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.label {
+  font-family: "Space", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  opacity: 0.7;
+}
+
+.value {
+  font-family: "Space", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.arrow {
+  font-size: 20px;
+  font-weight: 700;
+  font-family: "Space", sans-serif;
+  flex-shrink: 0;
+}

@@ -1,0 +1,9 @@
+---
+import Layout from '../layouts/Layout.astro';
+import AllProjects from '../components/AllProjects/AllProjects';
+import { projects } from '../data/projects';
+---
+
+<Layout>
+  <AllProjects client:load projects={projects} />
+</Layout>

@@ -1,0 +1,26 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Sidebar from '../../components/ProjectDetail/Sidebar';
+import DetailContent from '../../components/ProjectDetail/DetailContent';
+import { projects, getProjectBySlug, getOtherProjects } from '../../data/projects';
+import styles from '../../styles/ProjectDetail.module.css';
+
+export function getStaticPaths() {
+  return projects.map((p) => ({ params: { slug: p.slug } }));
+}
+
+const { slug } = Astro.params;
+const project = getProjectBySlug(slug!);
+const others = getOtherProjects(slug!);
+
+if (!project) {
+  return Astro.redirect('/');
+}
+---
+
+<Layout>
+  <div class={styles.page}>
+    <Sidebar client:load project={project} />
+    <DetailContent client:load project={project} otherProjects={others} />
+  </div>
+</Layout>
