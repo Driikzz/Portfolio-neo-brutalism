@@ -5,7 +5,7 @@
   border-radius: 20px;
   box-shadow: 5px 5px 0px #1a1a1a;
   overflow: hidden;
-  width: 320px;
+  width: 100%;
   background-color: #ffffff;
 }
 
@@ -52,6 +52,7 @@
   flex-direction: column;
   gap: 12px;
   padding: 20px;
+  flex: 1;
 }
 
 /* === Tags === */
@@ -94,11 +95,14 @@
 /* === Boutons === */
 .buttons {
   display: flex;
-  gap: 12px;
-  margin-top: 4px;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 8px;
+  flex-wrap: wrap;
 }
 
 .buttons > * {
   flex: 1;
+  min-width: fit-content;
   justify-content: center;
 }

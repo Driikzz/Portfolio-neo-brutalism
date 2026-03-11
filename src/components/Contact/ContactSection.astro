@@ -1,0 +1,169 @@
+---
+import LabelCustom from '../Buttons/LabelCustom';
+import ContactForm from './ContactForm';
+import ContactInfoCard from './ContactInfoCard';
+---
+
+<section class="contactSection">
+
+  <div class="contactHeader">
+    <LabelCustom client:load text="Contact" backgroundColor="#8C52FF" color="#ffffff" />
+    <h2 class="contactTitle">Travaillons<br /><span class="contactUnderline">ensemble.</span></h2>
+    <p class="contactDesc">
+      Un projet en tête ? Une question ? Je réponds sous 24h.
+    </p>
+  </div>
+
+  <div class="contactGrid">
+
+    <div class="contactLeft">
+      <ContactForm client:load />
+    </div>
+
+    <div class="contactRight">
+      <ContactInfoCard
+        icon="email"
+        label="Email"
+        value="remisalles.12@gmail.com"
+        href="mailto:remisalles.12@gmail.com"
+        backgroundColor="#FF3EA5"
+        color="#ffffff"
+      />
+
+      <ContactInfoCard
+        icon="github"
+        label="GitHub"
+        value="github.com/Driikzz"
+        href="https://github.com/Driikzz"
+        backgroundColor="#1a1a1a"
+        color="#ffffff"
+      />
+
+      <ContactInfoCard
+        icon="linkedin"
+        label="LinkedIn"
+        value="Rémi Salles"
+        href="https://www.linkedin.com/in/r%C3%A9mi-salles-501038285/"
+        backgroundColor="#0A66C2"
+        color="#ffffff"
+      />
+
+      <div class="availCard">
+        <span class="availDot"></span>
+        <div class="availText">
+          <p class="availTitle">Disponible maintenant</p>
+          <p class="availSub">Ouvert aux missions freelance &amp; CDI</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<style>
+  .contactSection {
+    padding: 48px 40px 60px;
+  }
+
+  .contactHeader {
+    margin-bottom: 40px;
+  }
+
+  .contactTitle {
+    font-family: "Space", sans-serif;
+    font-size: 64px;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.1;
+    margin: 12px 0 14px;
+  }
+
+  .contactUnderline {
+    display: inline-block;
+    border-bottom: 14px solid #ffde596f;
+  }
+
+  .contactDesc {
+    font-family: "Space", sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #6B7280;
+    margin: 0;
+    max-width: 500px;
+  }
+
+  .contactGrid {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 32px;
+    align-items: start;
+  }
+
+  .contactLeft {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .contactRight {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .availCard {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 20px 24px;
+    border: 3px dashed #22c55e;
+    border-radius: 16px;
+    background-color: #f0fff4;
+  }
+
+  .availDot {
+    width: 14px;
+    height: 14px;
+    background-color: #22c55e;
+    border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 4px #bbf7d0;
+  }
+
+  .availText {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .availTitle {
+    font-family: "Space", sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #15803d;
+    margin: 0;
+  }
+
+  .availSub {
+    font-family: "Space", sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: #4B5563;
+    margin: 0;
+  }
+
+  @media (max-width: 900px) {
+    .contactGrid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .contactSection {
+      padding: 32px 20px 48px;
+    }
+    .contactTitle {
+      font-size: 40px;
+    }
+  }
+</style>

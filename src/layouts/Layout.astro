@@ -10,9 +10,11 @@
 	</head>
 	<body>
 		<div class="bg-animated">
-			<div class="shape shape-1"></div>
-			<div class="shape shape-2"></div>
-			<div class="shape shape-3"></div>
+			<div class="shape shape-1" title=""></div>
+			<div class="shape shape-2" title=""></div>
+			<div class="shape shape-3" title=""></div>
+			<div class="shape shape-4" title=""></div>
+			<div class="shape shape-5" title=""></div>
 		</div>
 
 		<main class="card">
@@ -57,6 +59,11 @@
 		box-sizing: border-box;
 	}
 
+	/* Astro island wrappers transparents pour le layout flex/grid */
+	astro-island {
+		display: contents;
+	}
+
 	html {
 		scroll-behavior: smooth;
 	}
@@ -78,7 +85,7 @@
 		inset: 0;
 		z-index: 0;
 		pointer-events: none;
-		overflow: hidden;
+		overflow: visible;
 	}
 
 	.shape {
@@ -86,6 +93,21 @@
 		border: 3px solid #1a1a1a;
 		border-radius: 20px;
 		opacity: 0.12;
+		pointer-events: none;
+		user-select: none;
+		transition: opacity 0.2s ease, box-shadow 0.2s ease;
+		will-change: transform;
+	}
+
+	.shape.is-hover {
+		opacity: 0.3;
+		box-shadow: 4px 4px 0px #1a1a1a;
+	}
+
+	.shape.is-dragging {
+		opacity: 0.55;
+		box-shadow: 6px 6px 0px #1a1a1a;
+		transition: opacity 0.1s ease, box-shadow 0.1s ease;
 	}
 
 	.shape-1 {
@@ -116,6 +138,27 @@
 		animation: float3 12s ease-in-out infinite;
 	}
 
+	.shape-4 {
+		width: 90px;
+		height: 90px;
+		background-color: #22D3EE;
+		top: 20%;
+		right: 8%;
+		border-radius: 12px;
+		transform: rotate(20deg);
+		animation: float4 9s ease-in-out infinite;
+	}
+
+	.shape-5 {
+		width: 70px;
+		height: 70px;
+		background-color: #F97316;
+		bottom: 25%;
+		left: 12%;
+		border-radius: 50%;
+		animation: float5 11s ease-in-out infinite;
+	}
+
 	@keyframes float1 {
 		0%, 100% { transform: translate(0, 0) rotate(0deg); }
 		50% { transform: translate(30px, 20px) rotate(10deg); }
@@ -129,6 +172,16 @@
 	@keyframes float3 {
 		0%, 100% { transform: translate(0, 0) rotate(0deg); }
 		50% { transform: translate(15px, -25px) rotate(-8deg); }
+	}
+
+	@keyframes float4 {
+		0%, 100% { transform: rotate(20deg) translate(0, 0); }
+		50% { transform: rotate(35deg) translate(-18px, 22px); }
+	}
+
+	@keyframes float5 {
+		0%, 100% { transform: translate(0, 0) scale(1); }
+		50% { transform: translate(20px, -18px) scale(1.08); }
 	}
 
 	/* Card principale */
@@ -152,3 +205,145 @@
 		}
 	}
 </style>
+
+<script>
+import { gsap } from 'gsap';
+
+const FRICTION = 0.97;
+const RESTITUTION = 0.75;
+const STOP_THRESHOLD = 0.04;
+
+const shapes = Array.from(document.querySelectorAll<HTMLElement>('.shape'));
+
+type ShapeState = {
+  vx: number;
+  vy: number;
+  history: { x: number; y: number; t: number }[];
+  tickerFn: (() => void) | null;
+};
+
+const state = new Map<HTMLElement, ShapeState>();
+shapes.forEach(el => state.set(el, { vx: 0, vy: 0, history: [], tickerFn: null }));
+
+let activeShape: HTMLElement | null = null;
+let hoveredShape: HTMLElement | null = null;
+
+// ---- Helpers ----
+function getShapeAt(x: number, y: number): HTMLElement | null {
+  for (const el of shapes) {
+    const r = el.getBoundingClientRect();
+    if (x >= r.left && x <= r.right && y >= r.top && y <= r.bottom) return el;
+  }
+  return null;
+}
+
+function stopTicker(el: HTMLElement) {
+  const s = state.get(el)!;
+  if (s.tickerFn) { gsap.ticker.remove(s.tickerFn); s.tickerFn = null; }
+}
+
+function freezeAtCurrentPos(el: HTMLElement) {
+  const before = el.getBoundingClientRect();
+  el.style.animation = 'none';
+  el.style.transform = '';
+  const after = el.getBoundingClientRect();
+  gsap.set(el, { x: before.left - after.left, y: before.top - after.top });
+}
+
+function launchBounce(el: HTMLElement) {
+  stopTicker(el);
+  const s = state.get(el)!;
+
+  const fn = () => {
+    s.vx *= FRICTION;
+    s.vy *= FRICTION;
+
+    const r = el.getBoundingClientRect();
+    const cx = parseFloat(String(gsap.getProperty(el, 'x')));
+    const cy = parseFloat(String(gsap.getProperty(el, 'y')));
+    const VW = window.innerWidth;
+    const VH = window.innerHeight;
+
+    let nx = cx + s.vx;
+    let ny = cy + s.vy;
+
+    if (r.left + s.vx < 0)   { s.vx =  Math.abs(s.vx) * RESTITUTION; nx = cx - r.left; }
+    if (r.right + s.vx > VW) { s.vx = -Math.abs(s.vx) * RESTITUTION; nx = cx + (VW - r.right); }
+    if (r.top + s.vy < 0)    { s.vy =  Math.abs(s.vy) * RESTITUTION; ny = cy - r.top; }
+    if (r.bottom + s.vy > VH){ s.vy = -Math.abs(s.vy) * RESTITUTION; ny = cy + (VH - r.bottom); }
+
+    gsap.set(el, { x: nx, y: ny });
+
+    if (Math.abs(s.vx) < STOP_THRESHOLD && Math.abs(s.vy) < STOP_THRESHOLD) stopTicker(el);
+  };
+
+  s.tickerFn = fn;
+  gsap.ticker.add(fn);
+}
+
+// ---- Curseur hover (détection via coordonnées) ----
+document.addEventListener('mousemove', (e: MouseEvent) => {
+  if (activeShape) return;
+  const hit = getShapeAt(e.clientX, e.clientY);
+  if (hit !== hoveredShape) {
+    hoveredShape?.classList.remove('is-hover');
+    hit?.classList.add('is-hover');
+    hoveredShape = hit;
+    document.body.style.cursor = hit ? 'grab' : '';
+  }
+});
+
+// ---- Drag via capture phase (passe à travers le card) ----
+document.addEventListener('pointerdown', (e: PointerEvent) => {
+  const hit = getShapeAt(e.clientX, e.clientY);
+  if (!hit) return;
+
+  e.stopPropagation();
+  e.preventDefault();
+
+  activeShape = hit;
+  stopTicker(hit);
+  freezeAtCurrentPos(hit);
+
+  const s = state.get(hit)!;
+  s.vx = 0; s.vy = 0; s.history = [];
+
+  hit.classList.remove('is-hover');
+  hit.classList.add('is-dragging');
+  document.body.style.cursor = 'grabbing';
+
+  let lastX = e.clientX;
+  let lastY = e.clientY;
+
+  function onMove(ev: PointerEvent) {
+    const dx = ev.clientX - lastX;
+    const dy = ev.clientY - lastY;
+    s.history.push({ x: ev.clientX, y: ev.clientY, t: performance.now() });
+    if (s.history.length > 8) s.history.shift();
+    gsap.set(hit, { x: `+=${dx}`, y: `+=${dy}` });
+    lastX = ev.clientX;
+    lastY = ev.clientY;
+  }
+
+  function onUp() {
+    hit.classList.remove('is-dragging');
+    document.body.style.cursor = '';
+    activeShape = null;
+    hoveredShape = null;
+    document.removeEventListener('pointermove', onMove);
+    document.removeEventListener('pointerup', onUp);
+
+    if (s.history.length >= 2) {
+      const old = s.history[0];
+      const fresh = s.history[s.history.length - 1];
+      const dt = Math.max(fresh.t - old.t, 1);
+      s.vx = ((fresh.x - old.x) / dt) * 18;
+      s.vy = ((fresh.y - old.y) / dt) * 18;
+    }
+    launchBounce(hit);
+  }
+
+  document.addEventListener('pointermove', onMove);
+  document.addEventListener('pointerup', onUp);
+}, { capture: true });
+</script>
